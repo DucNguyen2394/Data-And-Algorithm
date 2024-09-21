@@ -2,6 +2,7 @@ package test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -10,26 +11,32 @@ import java.util.Set;
 
 public class UnitTest {
 	
-	 public static int findTheLongestSubstring(String s) {
-		 int result = 0;
-		 Map<Character, Integer> map = new HashMap<Character, Integer>();
-		 map.put('a', 0);
-		 map.put('e', 0);
-		 map.put('i', 0);
-		 map.put('o', 0);
-		 map.put('u', 0);
-		 for(int i = 0; i < s.length(); i++) {
-			 if(map.containsKey(s.charAt(i))) {
-				 map.put(s.charAt(i), map.getOrDefault(s.charAt(i), map.get(s.charAt(i))) + 1);
-			 }
-		 }
-		 System.out.println('a' - 'e' );
-		 System.out.println(map);
-		 return result;
-	 }
+	public static String largestNumber(int[] nums) {
+		String[] numStr = new String[nums.length];
+		for(int i = 0; i < nums.length; i++) {
+			numStr[i] = String.valueOf(nums[i]);
+		}
+		Arrays.sort(numStr, new Comparator<String>() {
+			@Override
+			public int compare(String o1, String o2) {
+				return (o2 + o1).compareTo(o1 + o2);
+			}
+		});		
+		if(numStr[0].equals("0")) {
+			return "0";
+		}
+        String result = "";
+        for(String s : numStr) {
+        	result += s;
+        }
+		return result;
+    }
+	
+	
 
 	public static void main(String[] args) {
-		int[] nums = {};
-		findTheLongestSubstring("eleetminicoworoep");
+		int[] nums = {1,10,11,12,13,2};
+//		largestNumber(nums);
 	}
+	
 }

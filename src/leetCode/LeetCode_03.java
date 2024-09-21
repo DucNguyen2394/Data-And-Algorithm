@@ -10,7 +10,6 @@ public class LeetCode_03 {
         Set<Character> set = new HashSet<Character>();
         int i = 0;
         int j = 0;
-        String str = "";
         int result = 0;
         while(i < s.length()) {
         	if(set.contains(s.charAt(i))) {
